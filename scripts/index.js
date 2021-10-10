@@ -5,8 +5,8 @@ const editButton = document.querySelector('.profile__edit-button');
 const formButton = document.querySelector('.popup__button')
 const form = document.querySelector('.popup__admin')
 
-const nameField = document.querySelector('.form__item_el_name')
-const professionField = document.querySelector('.form__item_el_profession')
+const nameField = document.querySelector('.popup__item_el_name')
+const professionField = document.querySelector('.popup__item_el_profession')
 const kustoTitle = document.querySelector('.profile__kusto')
 const researcherTitle = document.querySelector('.profile__researcher')
 
