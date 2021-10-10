@@ -1,0 +1,15 @@
+.popup__handlers {
+    margin: 5px auto 37px;
+    padding: 0;
+    max-width: 358px;
+    min-height: 50px;
+    border: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__handlers {
+        max-width: 238px;
+        min-height: 46px;
+        margin: 5px auto 25px;
+    }
+}

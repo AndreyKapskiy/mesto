@@ -1,0 +1,23 @@
+.popup__toggle {
+    max-width: 32px;
+    max-height: 32px;
+    cursor: pointer;
+    transition: opacity .4s;
+    z-index: 4;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+}
+
+.popup__toggle:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__toggle {
+        max-width: 20px;
+        max-height: 20px;
+        top: -40px;
+        right: 0px;
+    }
+}
