@@ -3,12 +3,12 @@ const popupClose = document.querySelector('.popup__toggle');
 const editButton = document.querySelector('.profile__edit-button');
 
 const formButton = document.querySelector('.popup__button')
-const form = document.querySelector('.popup__admin')
+const form = document.querySelector('.popup__form')
 
 const nameField = document.querySelector('.popup__item_el_name')
 const professionField = document.querySelector('.popup__item_el_profession')
-const kustoTitle = document.querySelector('.profile__kusto')
-const researcherTitle = document.querySelector('.profile__researcher')
+const kustoTitle = document.querySelector('.profile__name')
+const researcherTitle = document.querySelector('.profile__profession')
 
 
 function openPopup() {
@@ -21,13 +21,6 @@ function closePopup() {
     popup.classList.remove('popup_opened')
 }
 
-
-editButton.addEventListener('click', openPopup)
-
-popupClose.addEventListener('click', closePopup) 
-
-formButton.addEventListener('click', closePopup)
-
 function submitForm(event) {
     event.preventDefault()
     
@@ -37,5 +30,13 @@ function submitForm(event) {
 
     closePopup();
 }
+
+editButton.addEventListener('click', openPopup)
+
+popupClose.addEventListener('click', closePopup) 
+
+
+
+
 
 form.addEventListener('submit', submitForm)

@@ -1,6 +1,6 @@
-.profile__researcher {
-    position: absolute;
-    top: 55px;
+.profile__profession {
+    grid-column-start: 1;
+    grid-column-end: 3;
     max-width: 336px;
     margin: 0;
     padding: 0;
@@ -13,8 +13,8 @@
     overflow: hidden;
 }
  
-@media screen and (max-width: 767px) {
-    .profile__researcher {
+@media screen and (max-width: 1023px) {
+    .profile__profession {
         top: 40px;
         max-width: 282px;
         font-size: 14px;

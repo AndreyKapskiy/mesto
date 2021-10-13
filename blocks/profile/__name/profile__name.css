@@ -1,4 +1,8 @@
-.profile__kusto {
+.profile__name {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    justify-self: start;
     max-width: 294px;
     margin: 0;
     padding: 0;
@@ -11,8 +15,8 @@
     overflow: hidden;
 }
 
-@media screen and (max-width: 767px) {
-    .profile__kusto {
+@media screen and (max-width: 1023px) {
+    .profile__name {
         max-width: 189px;
         font-size: 27px;
         line-height: 1.22;

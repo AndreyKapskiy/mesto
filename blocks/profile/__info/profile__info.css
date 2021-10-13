@@ -1,14 +1,27 @@
 .profile__info {
     margin: 22px 244px 0 30px;
     padding: 0;
-    width: 336px;
-    position: relative;
-    display: flex;
+    max-width: 336px;
+    display: grid;
+    grid-template-columns: repeat(minmax(294px 1fr), minmax(24px 1fr));
+    grid-template-rows: 39px 18px;
+    gap: 16px 18px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1279px) {
     .profile__info {
-        max-width: 282px;
-        margin: 0px auto 36px;
+        min-width: 336px;
+        margin: 22px auto 30px;
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .profile__info {
+        min-width: 282px;
+        grid-template-columns: repeat(minmax(189px 1fr), minmax(18px 1fr));
+        grid-template-rows: 26px 14px;
+        gap: 14px 0px;
+        margin: 0px auto 15px;
     }
 }

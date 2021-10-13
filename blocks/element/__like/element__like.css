@@ -1,10 +1,18 @@
 .element__like {
-    margin: 0;
-    max-width: 22px;
-    position: absolute;
-    top: 314px;
-    right: 20px;
+    border: 0;
+    padding: 0;
+    min-width: 22px;
+    height: 19px;
+    position: relative;
+    top: 312px;
+    right: 290px;
+    background: url(../../../images/4.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
     cursor: pointer;
+    z-index: 2;
+    transition: opacity .4s;
 }
 
 .element__like:hover {
