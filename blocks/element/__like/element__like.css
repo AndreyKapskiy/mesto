@@ -3,9 +3,6 @@
     padding: 0;
     min-width: 22px;
     height: 19px;
-    position: relative;
-    top: 312px;
-    right: 290px;
     background: url(../../../images/4.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -13,6 +10,7 @@
     cursor: pointer;
     z-index: 2;
     transition: opacity .4s;
+    margin-top: 5px;
 }
 
 .element__like:hover {

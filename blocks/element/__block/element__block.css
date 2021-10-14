@@ -1,0 +1,6 @@
+.element__block {
+    max-width: 246px;
+    display: flex;
+    margin-top: 25px;
+    margin-left: 21px;
+}
