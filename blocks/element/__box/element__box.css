@@ -1,0 +1,8 @@
+.element__box {
+    border: 0;
+    padding: 0;
+    min-width: 15.44px;
+    height: 13.3px;
+    background: url(../../../images/Vector_box.svg);
+    margin: auto;
+}

@@ -1,0 +1,9 @@
+.popup__name {
+    color: white;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    font-size: 12px;
+    line-height: 1.21;
+    
+}

@@ -1,0 +1,8 @@
+.element__cap {
+    border: 0;
+    padding: 0;
+    min-width: 18px;
+    height: 4.42px;
+    background: url(../../../images/Vector_cap.svg);
+    margin-bottom: 1.28px;
+}

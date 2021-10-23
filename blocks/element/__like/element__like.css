@@ -8,7 +8,7 @@
     background-repeat: no-repeat;
     box-sizing: border-box;
     cursor: pointer;
-    z-index: 2;
+    z-index: 4;
     transition: opacity .4s;
     margin-top: 5px;
 }

@@ -33,55 +33,7 @@
 
       <section class="elements">
 
-        <article class="element">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск" class="element__image">
-          <div class="element__block">
-            <h2 class="element__text">Карачаевск</h2>
-            <button aria-label="лайк" type="button" class="element__like"></button>
-          </div>
-        </article>
-
-        <article class="element">
-          <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус" class="element__image">
-          <div class="element__block">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button aria-label="лайк" type="button" class="element__like"></button>
-          </div>
-        </article>
-
-        <article class="element">
-          <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай" class="element__image">
-          <div class="element__block">
-            <h2 class="element__text">Домбай</h2>
-            <button aria-label="лайк" type="button" class="element__like"></button>
-          </div>
-        </article>
-
-        <article class="element">
-          <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус" class="element__image">
-          <div class="element__block">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button aria-label="лайк" type="button" class="element__like"></button>
-          </div>
-        </article>
-
-        <article class="element">
-          <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай" class="element__image">
-          <div class="element__block">
-            <h2 class="element__text">Домбай</h2>
-            <button aria-label="лайк" type="button" class="element__like"></button>
-          </div>
-        </article>
-
-        <article class="element">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск" class="element__image">
-          <div class="element__block">
-            <h2 class="element__text">Карачаево-Черкессия</h2>
-            <button aria-label="лайк" type="button" class="element__like"></button>
-          </div>
-        </article>
-
-    </section>
+      </section>
 
     </main>
 
@@ -89,7 +41,7 @@
       <p class="footer__text">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_transition">
       <div class="popup__container">
         <button aria-label="закрыть" class="popup__toggle" type="button"></button>
         <form class="popup__form" name="formname">
@@ -105,8 +57,48 @@
       </div>
     </div>
 
+    <div class="popup popup_theme_card popup_transition">
+      <div class="popup__container popup__container_theme_card">
+        <button aria-label="закрыть" class="popup__toggle popup__toggle_close" type="button"></button>
+        <form class="popup__form popup__form_add" name="formname">
+            <h2 class="popup__heading">Новое место</h2>
+            <fieldset class="popup__input-container">
+              <input type="text" name="namecard" class="popup__item popup__item_add" placeholder="Название" required>
+              <input type="text" name="linkcard" class="popup__item popup__item_src" placeholder="Ссылка на картинку" required>
+            </fieldset>
+            <fieldset class="popup__handlers">
+            <button type="submit" class="popup__button">Создать</button>
+            </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_theme_image popup_transition">
+      <figure class="popup__container-image">
+        <button aria-label="закрыть" class="popup__toggle popup__toggle_closeimage" type="button"></button>
+        <img src="." alt="." class="popup__image">
+        <figcaption class="popup__name"></figcaption>
+      </figure>
+    </div>
+
   </div>
+
+<template class="template">
   
+  <article class="element">
+    <img src="." alt="." class="element__image">
+    <div class="element__block">
+      <h2 class="element__text"></h2>
+      <button aria-label="лайк" type="button" class="element__like"></button>
+    </div>
+    <button aria-label="мусор" type="button" class="element__trash element__trash_delete">
+      <div class="element__cap"></div>
+      <div class="element__box"></div>
+    </button>
+  </article>
+
+</template>  
+
 <script src="scripts/index.js"></script>
 </body>
 </html>

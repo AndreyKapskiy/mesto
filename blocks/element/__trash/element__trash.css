@@ -1,0 +1,18 @@
+.element__trash {
+    border: 0;
+    padding: 0;
+    max-width: 18px;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: opacity .4s;
+    z-index: 2;
+    background: none;
+}
+
+.element__trash:hover {
+    opacity: 0.5;
+}
