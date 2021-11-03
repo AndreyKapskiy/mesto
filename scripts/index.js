@@ -95,7 +95,8 @@ function openEditProfileForm() {
 }
 
 function closePopup(popup) {
-  popup.classList.remove('popup_opened')
+  popup.classList.remove('popup_opened');
+  document.addEventListener('keydown', closeEsc);
 }
 
 function submitEditProfileForm(event) {
@@ -105,8 +106,16 @@ function submitEditProfileForm(event) {
     closePopup(popupEditProfile) 
 }
 
-editButton.addEventListener('click', openEditProfileForm)
+editButton.addEventListener('click', openEditProfileForm)   //Здравствуйте:). Старался реализовать очистку попапа при повторном окрытии и вродебы написал функциию. Можете написать замечания.
+//{
+//  resetError(popupProfile)
+//  openPopup(popupProfile)
+//}
 addButton.addEventListener('click', openPopupCard)
+//{
+//  resetError(popupCard)
+//  openPopup(popupCard)
+//}
 popupEditProfileCloseBtn.addEventListener('click', closePopupProfile)
 popupAddCardCloseBtn.addEventListener('click', closePopupCard)
 popupImageCloseBtn.addEventListener('click', closeImage)
@@ -114,5 +123,60 @@ popupImageCloseBtn.addEventListener('click', closeImage)
 formEditProfile.addEventListener('submit', submitEditProfileForm)
 
 function openPopup(popup) {
-  popup.classList.add('popup_opened')
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeEsc);
 }
+
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__item',
+  inputErrorClass: 'popup__item_invalid',
+  errorClass: 'popup__item_error_activ',
+  submitButtonSelector: '.popup__button',
+  submitButtonErrorClass: 'popup__button_invalid'
+}
+
+enableValidation(config)
+
+//закрытие на оверлей
+popupEditProfile.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(popupEditProfile);
+  };
+});
+
+popupCard.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(popupCard);
+  };
+});
+
+popupThemeImage.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(popupThemeImage);
+  };
+});
+
+//закрытие на Esc
+const ESC_KEY = 'Escape';
+function closeEsc(evt) {
+  if (evt.key === ESC_KEY) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
+
+//сброс текста ошибок при повторном открытии 
+//
+//function resetError(popup) {
+//  const errorTexts = Array.form(popup.querySelectorALL('.popup__item_error'));
+//  const errorInputs = Array.form(popup.querySelectorALL('.popup__item'));
+//  errorTexts.forEach((item) => {
+//    item.classList.remove('popup__item_error_activ');
+//  });
+//  errorInputs.forEach((item) => {
+//    item.classList.remove('popup__item_invalid');
+//  });
+//  openPopup(popup);
+//}

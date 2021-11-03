@@ -41,14 +41,16 @@
       <p class="footer__text">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup_transition popup_edit-profile"><!-- Незнаю правильно ли я понял, что этот класс нужно добавить для открития попапа. -->
+    <div class="popup popup_transition popup_edit-profile">
       <div class="popup__container">
         <button aria-label="закрыть" class="popup__toggle" type="button"></button>
-        <form class="popup__form" name="formname">
+        <form class="popup__form" name="formname" novalidate>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <fieldset class="popup__input-container">
-              <input type="text" name="name" class="popup__item popup__item_el_name" placeholder="Имя" required>
-              <input type="text" name="profession" class="popup__item popup__item_el_profession" placeholder="Вид деятельности" required>
+              <input type="text" id="name" name="name" class="popup__item popup__item_el_name" placeholder="Имя" required minlength="2" maxlength="40">
+              <span class="popup__item_error" id="name-error"></span>
+              <input type="text" id="profession" name="profession" class="popup__item popup__item_el_profession" placeholder="Вид деятельности" required minlength="2" maxlength="200">
+              <span class="popup__item_error" id="profession-error"></span>
             </fieldset>
             <fieldset class="popup__handlers">
             <button type="submit" class="popup__button">Сохранить</button>
@@ -60,11 +62,13 @@
     <div class="popup popup_theme_card popup_transition">
       <div class="popup__container popup__container_theme_card">
         <button aria-label="закрыть" class="popup__toggle popup__toggle_close" type="button"></button>
-        <form class="popup__form popup__form_add" name="formname">
+        <form class="popup__form popup__form_add" name="formname" novalidate>
             <h2 class="popup__heading">Новое место</h2>
             <fieldset class="popup__input-container">
-              <input type="text" name="namecard" class="popup__item popup__item_add" placeholder="Название" required>
-              <input type="text" name="linkcard" class="popup__item popup__item_src" placeholder="Ссылка на картинку" required>
+              <input type="text" id="namecard" name="namecard" class="popup__item popup__item_add" placeholder="Название" required minlength="2" maxlength="30">
+              <span class="popup__item_error" id="namecard-error"></span>
+              <input type="url" id="link" name="linkcard" class="popup__item popup__item_src" placeholder="Ссылка на картинку" required>
+              <span class="popup__item_error" id="link-error"></span>
             </fieldset>
             <fieldset class="popup__handlers">
             <button type="submit" class="popup__button">Создать</button>
@@ -98,6 +102,7 @@
   </article>
 
 </template>  
+<script src="scripts/validate.js"></script>
 <script src="scripts/initial-сards.js"></script> 
 <script src="scripts/index.js"></script>
 </body>
