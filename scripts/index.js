@@ -74,7 +74,7 @@ function submitAddCardForm(event){
     renderCard({ name, link })
     event.target.reset();
     closePopupCard();
-    formButton.disabled = true; //вроде бы работает:)
+    formButton.disabled = true; //вроде бы работает:). Сделал цвет как при валидации:)(действительно на черную так и хотелось нажать:)).
 }
 
 formAddCard.addEventListener('submit', submitAddCardForm)
