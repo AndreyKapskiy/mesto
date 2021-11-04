@@ -1,7 +1,6 @@
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupEditProfileCloseBtn = document.querySelector('.popup__toggle');
 const editButton = document.querySelector('.profile__edit-button');
-const formButton = document.querySelector('.popup__button')
 const formEditProfile = document.querySelector('.popup__form')
 const nameField = document.querySelector('.popup__item_el_name')
 const professionField = document.querySelector('.popup__item_el_profession')
@@ -16,7 +15,10 @@ const formAddCard = document.querySelector('.popup__form_add');
 const inputAddName = document.querySelector('.popup__item_add');
 const inputAddSrc = document.querySelector('.popup__item_src');
 const popupProfile = document.querySelector('.popup_edit-profile');
+const formButton = formAddCard.querySelector('.popup__button')
   
+
+
 initialCards.forEach(renderCard)
 
 function createCard(cardData){
@@ -72,6 +74,7 @@ function submitAddCardForm(event){
     renderCard({ name, link })
     event.target.reset();
     closePopupCard();
+    formButton.disabled = true; //вроде бы работает:)
 }
 
 formAddCard.addEventListener('submit', submitAddCardForm)
@@ -96,7 +99,7 @@ function openEditProfileForm() {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', closeEsc);
+  document.removeEventListener('keydown', closeEsc);
 }
 
 function submitEditProfileForm(event) {
