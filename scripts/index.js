@@ -51,7 +51,7 @@ import FormValidator from './FormValidator.js';
 
 const config = {
   formSelector: '.popup__form',
-  inputSelector: '.popup__item',
+  inputSelector: '.popup__item-item',
   inputErrorClass: 'popup__item_invalid',
   errorClass: 'popup__item_error_activ',
   submitButtonSelector: '.popup__button',
