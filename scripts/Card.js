@@ -37,7 +37,7 @@ class Card {
   }
 
   _setEventListeners(config) {
-    this._element.querySelector('.element__image').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
         this._handleOpenPopup();
     });
     this._element.querySelector(config.deleteButton).addEventListener('click', () => {
@@ -50,12 +50,13 @@ class Card {
 
   createCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector('.element__image');
     this._like = this._element.querySelector(config.likeButton);
     this._setEventListeners(config);
 
 
-    this._element.querySelector('.element__image').src = this._link;
-    this._element.querySelector('.element__image').alt = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._element.querySelector('.element__text').textContent = this._name;
 
     return this._element;

@@ -20,7 +20,9 @@ import FormValidator from './FormValidator.js';
  const inputAddName = document.querySelector('.popup__item_add');
  const inputAddSrc = document.querySelector('.popup__item_src');
  const popupProfile = document.querySelector('.popup_edit-profile');
- const formButton = formAddCard.querySelector('.popup__button')
+
+ const popups = document.querySelectorAll('.popup')
+ 
   
  const initialCards = [
   {
@@ -58,11 +60,32 @@ const config = {
   submitButtonErrorClass: 'popup__button_invalid'
 }
 
-const editFormValidator = new FormValidator(config, popupEditProfile);
-editFormValidator.enableValidation();
+//Здравствуйте, Геннадий:). Старался все исправить. Большое спасибо за комментарии *можно лучше*:). Новое пока не удаля, что закомментировал. 
 
-const addFormValidator = new FormValidator(config, popupCard);
-addFormValidator.enableValidation();
+const formValidators = {}
+
+// Включение валидации
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement)
+// получаем данные из атрибута `name` у формы
+    const formName = formElement.getAttribute('name')
+
+   // вот тут в объект записываем под именем формы
+    formValidators[formName] = validator;
+   validator.enableValidation();
+  });
+};
+
+enableValidation(config);
+
+
+//const editFormValidator = new FormValidator(config, popupEditProfile);
+//editFormValidator.enableValidation();
+
+//const addFormValidator = new FormValidator(config, popupCard);
+//addFormValidator.enableValidation();
 
  const createCard = (data) => {
   // создадим карточку
@@ -78,30 +101,6 @@ initialCards.forEach((data) => {
   renderCard(data)
 })
 
- //initialCards.forEach(renderCard)
-
-// function createCard(cardData){
-//     const cardElement = templateItem.querySelector('.element').cloneNode(true);
-//     const elementImage = cardElement.querySelector('.element__image');
-//    cardElement.querySelector('.element__text').innerText = cardData.name;
-//     elementImage.src = cardData.link;
-//    elementImage.alt = cardData.name;
-//
-//     cardElement.querySelector('.element__trash_delete').addEventListener('click', (event)=>{
-//         event.target.closest('.element').remove();
-//     });
-//
-//     cardElement.querySelector('.element__like').addEventListener('click', (event)=>{
-//       event.target.classList.toggle('element__like_activ_like');
-//     });
-//
-//   elementImage.addEventListener('click', function(event){
-//       event.preventDefault();
-//       openImage(cardData.link, cardData.name);
-//     });
-//
-//     return cardElement;
-// }
   
  const popupThemeImage = document.querySelector('.popup_theme_image');
  const popupImageCloseBtn = document.querySelector('.popup__toggle_closeimage');
@@ -115,9 +114,9 @@ initialCards.forEach((data) => {
    popupName.innerText = alt;
  } 
 
- function closeImage() {
-   closePopup(popupThemeImage)
- } 
+// function closeImage() {
+//   closePopup(popupThemeImage)
+// } 
 
  function renderCard(initialCard){
      const elemant = createCard(initialCard);
@@ -132,25 +131,27 @@ initialCards.forEach((data) => {
     
      listElement.prepend(createCard({ name, link }))
      event.target.reset();
-     closePopupCard();
-     formButton.disabled = true; //вроде бы работает:). Сделал цвет как при валидации:)(действительно на черную так и хотелось нажать:)).
+     closePopup(popupCard)//closePopupCard();
+     //addFormValidator.resetValidation();
  }
 
  formAddCard.addEventListener('submit', submitAddCardForm)
 
  function openPopupCard() {
+   formValidators['formname'].resetValidation()
    openPopup(popupCard)  // Старался все исправить. Незнаю правильно ли я понял про открытие и закрытие:((
  }
 
- function closePopupCard() {
-   closePopup(popupCard)
- }
+// function closePopupCard() {
+//   closePopup(popupCard)
+// }
 
- function closePopupProfile() {
-   closePopup(popupEditProfile)
- }
+// function closePopupProfile() {
+//   closePopup(popupEditProfile)
+// }
 
  function openEditProfileForm() {
+     formValidators['formname'].resetValidation()
      openPopup(popupProfile) // Старался все исправить. Незнаю правильно ли я понял про открытие и закрытие:((
      nameField.value = userName.textContent;
      professionField.value = userProfession.textContent;
@@ -172,9 +173,9 @@ initialCards.forEach((data) => {
 
  addButton.addEventListener('click', openPopupCard)
 
- popupEditProfileCloseBtn.addEventListener('click', closePopupProfile)
- popupAddCardCloseBtn.addEventListener('click', closePopupCard)
- popupImageCloseBtn.addEventListener('click', closeImage)
+// popupEditProfileCloseBtn.addEventListener('click', closePopupProfile)
+// popupAddCardCloseBtn.addEventListener('click', closePopupCard)
+// popupImageCloseBtn.addEventListener('click', closeImage)
 
  formEditProfile.addEventListener('submit', submitEditProfileForm)
 
@@ -184,28 +185,36 @@ initialCards.forEach((data) => {
  }
 
 
+ //закрытие на оверлей и крестики
+ popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__toggle')) {
+        closePopup(popup)
+      }
+  })
+}) 
 
 
- //enableValidation(config)
+// popupEditProfile.addEventListener('click', function (evt) {
+//   if (evt.target.classList.contains('popup')) {
+//     closePopup(popupEditProfile);
+//   };
+// });
 
- //закрытие на оверлей
- popupEditProfile.addEventListener('click', function (evt) {
-   if (evt.target.classList.contains('popup')) {
-     closePopup(popupEditProfile);
-   };
- });
+// popupCard.addEventListener('click', function (evt) {
+//   if (evt.target.classList.contains('popup')) {
+//     closePopup(popupCard);
+//   };
+// });
 
- popupCard.addEventListener('click', function (evt) {
-   if (evt.target.classList.contains('popup')) {
-     closePopup(popupCard);
-   };
- });
-
- popupThemeImage.addEventListener('click', function (evt) {
-   if (evt.target.classList.contains('popup')) {
-     closePopup(popupThemeImage);
-   };
- });
+// popupThemeImage.addEventListener('click', function (evt) {
+//   if (evt.target.classList.contains('popup')) {
+//    closePopup(popupThemeImage);
+//   };
+// });
 
  //закрытие на Esc
  const ESC_KEY = 'Escape';
