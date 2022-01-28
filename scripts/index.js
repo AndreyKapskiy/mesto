@@ -138,7 +138,7 @@ initialCards.forEach((data) => {
  formAddCard.addEventListener('submit', submitAddCardForm)
 
  function openPopupCard() {
-   formValidators['formname'].resetValidation()
+   formValidators['card-form'].resetValidation()
    openPopup(popupCard)  // Старался все исправить. Незнаю правильно ли я понял про открытие и закрытие:((
  }
 
@@ -151,7 +151,7 @@ initialCards.forEach((data) => {
 // }
 
  function openEditProfileForm() {
-     formValidators['formname'].resetValidation()
+     formValidators['profile-form'].resetValidation()
      openPopup(popupProfile) // Старался все исправить. Незнаю правильно ли я понял про открытие и закрытие:((
      nameField.value = userName.textContent;
      professionField.value = userProfession.textContent;
