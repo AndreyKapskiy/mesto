@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="pages/index.css">
+
   <title>Место Россия"</title>
   <meta name="description" content="Россия — это целая вселенная.">
   <meta name="keywords" content="Путешествия по России, Карачаевск, Гора Эльбрус, Домбай">
@@ -15,13 +15,13 @@
   <div class="page">
 
     <header class="header">
-      <img src="./images/1.svg" alt="Место Россия" class="header__logo">
+      <img src="<%=require('./images/1.svg')%>" alt="Место Россия" class="header__logo">
     </header>
    
     <main class="content">
 
       <section class="profile">
-        <img src="./images/image.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+        <img src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__profession">Исследователь океана</p>
@@ -104,6 +104,6 @@
 </template>  
 
 
-<script type="module" src="scripts/index.js"></script>
+
 </body>
 </html>

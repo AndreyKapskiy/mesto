@@ -7,11 +7,11 @@ const config = {
 }
 
 class Card {
-  constructor(cardSelector, name, link, openImage) {
+  constructor(cardSelector, name, link, { handleCardClick }) {
     this._cardSelector = cardSelector;
     this._name = name;
     this._link = link;
-    this._openImage = openImage;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -25,7 +25,7 @@ class Card {
   }
 
   _handleOpenPopup() {
-    this._openImage(this._link, this._name);
+    this._handleCardClick(this._link, this._name);
   }
 
   _handleLikeButton() {
