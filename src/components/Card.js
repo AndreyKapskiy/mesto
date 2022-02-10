@@ -7,10 +7,10 @@ const config = {
 }
 
 class Card {
-  constructor(cardSelector, name, link, { handleCardClick }) {
+  constructor(cardSelector, data, { handleCardClick }) {
     this._cardSelector = cardSelector;
-    this._name = name;
-    this._link = link;
+    this._name = data.name;
+    this._link = data.link;
     this._handleCardClick = handleCardClick;
   }
 
@@ -51,13 +51,14 @@ class Card {
   createCard() {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.element__image');
+    this._cardName = this._element.querySelector('.element__text');
     this._like = this._element.querySelector(config.likeButton);
     this._setEventListeners(config);
 
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
-    this._element.querySelector('.element__text').textContent = this._name;
+    this._cardName.textContent = this._name;
 
     return this._element;
   }

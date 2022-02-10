@@ -7,7 +7,7 @@ import UserInfo from '../components/UserInfo.js';
 
 import './index.css';
 
-import {initialCards, config, popupEditProfile, popupEditProfileCloseBtn, editButton, formEditProfile, nameField, professionField, userName, userProfession, popupAddCardCloseBtn, popupCard, addButton, listElement, templateItem, formAddCard, inputAddName, inputAddSrc, popupProfile, popups, cardListSelector, popupThemeImage, popupImageCloseBtn, popupImage, popupName} from '../utils/constants.js'
+import {initialCards, config, editButton, nameField, professionField, userName, userProfession, addButton, cardListSelector} from '../utils/constants.js'
 
 
 const formValidators = {}
@@ -32,7 +32,7 @@ enableValidation(config);
  const createCard = (data) => {
   // создадим карточку
   // главное правильно передать параметры
-  const card = new Card('.template', data.name, data.link, {handleCardClick: handleCardClick});
+  const card = new Card('.template', data, {handleCardClick: handleCardClick});
   // сделаем элемент
   const view = card.createCard();
   // добавить в список
@@ -47,129 +47,63 @@ const defaultCardList = new Section({
   }
 }, cardListSelector);
 
-defaultCardList.renderItems();
+defaultCardList.renderItems(initialCards);
 
-//initialCards.forEach((data) => {
-//  renderCard(data)
-//})
 
-const openImagePopup = new PopupWithImage('.popup_theme_image'); 
+//Здравствуйте, Надежда:). Старался все исправить. Большое спасибо за комментарии *можно лучше*:).
+const imagePopup = new PopupWithImage('.popup_theme_image'); 
 
 function handleCardClick(link, name) {
-  openImagePopup.open(link, name);
+  imagePopup.open(link, name);
 }
 
- 
 
 
-// function openImage(src, alt) {
-//   openPopup(popupThemeImage)
-//   popupImage.src = src;
-//   popupImage.alt = alt;
-//   popupName.innerText = alt;
-// } 
 
-
- //function renderCard(initialCard){
- //    const elemant = createCard(initialCard);
- //    listElement.prepend(elemant);
- //}
-
-
-const PopupWithFormAddCard = new PopupWithForm('.popup_theme_card', {
+const popupWithFormAddCard = new PopupWithForm('.popup_theme_card', {
   submitForm: ({ namecard, linkcard }) => {
     const card = createCard({ name: namecard, link: linkcard })
-    defaultCardList.addItem(card)
-    PopupWithFormAddCard.close()
+    defaultCardList.addItemItem(card)
+    popupWithFormAddCard.close()
   }
 })
-// function submitAddCardForm(event){
-//     event.preventDefault();
-//
-//     const name = inputAddName.value;
-//     const link = inputAddSrc.value;
-//    
-//     listElement.prepend(createCard({ name, link }))
-//     event.target.reset();
-//     closePopup(popupCard)
-// }
 
-// formAddCard.addEventListener('submit', submitAddCardForm)
 
  function openPopupCard() {
    formValidators['card-form'].resetValidation()
-   PopupWithFormAddCard.open()
+   popupWithFormAddCard.open()
  }
 
 
  function openEditProfileForm() {
      formValidators['profile-form'].resetValidation()
-     PopupWithFormEditProfileForm.open()
+     popupWithFormEditProfileForm.open()
      const info = userInfo.getUserInfo();
      nameField.value = info.name;
      professionField.value = info.profession;
  }
 
-// function closePopup(popup) {
-//   popup.classList.remove('popup_opened');
-//   document.removeEventListener('keydown', closeEsc);
-// }
 
 
-const PopupWithFormEditProfileForm = new PopupWithForm('.popup_edit-profile', {
+const popupWithFormEditProfileForm = new PopupWithForm('.popup_edit-profile', {
   submitForm: ({ name, profession }) => {
     userInfo.setUserInfo({ name, profession })
-    PopupWithFormEditProfileForm.close()
+    popupWithFormEditProfileForm.close()
   }
 })
 
 const userInfo = new UserInfo({
-  nameSelector: userName,
-  professionSelector: userProfession
+  name: userName,
+  profession: userProfession
 })
 
-// function submitEditProfileForm(event) {
-//     event.preventDefault()
-//     userName.textContent = nameField.value;
-//     userProfession.textContent = professionField.value;
-//     closePopup(popupEditProfile) 
-// }
 
  editButton.addEventListener('click', openEditProfileForm)
 
  addButton.addEventListener('click', openPopupCard)
 
 
-// formEditProfile.addEventListener('submit', submitEditProfileForm)
 
-// function openPopup(popup) {
-//   popup.classList.add('popup_opened');
-//   document.addEventListener('keydown', closeEsc);
-// }
-
-
- //закрытие на оверлей и крестики
-// popups.forEach((popup) => {
-//  popup.addEventListener('mousedown', (evt) => {
-//      if (evt.target.classList.contains('popup_opened')) {
-//          closePopup(popup)
-//      }
-//      if (evt.target.classList.contains('popup__toggle')) {
-//        closePopup(popup)
-//      }
-//  })
-//}) 
-
-
-// //закрытие на Esc
-// const ESC_KEY = 'Escape';
-// function closeEsc(evt) {
-//   if (evt.key === ESC_KEY) {
-//     const openedPopup = document.querySelector('.popup_opened');
-//     closePopup(openedPopup);
-//   }
-// }
-
-openImagePopup.setEventListeners();
-PopupWithFormAddCard.setEventListeners();
-PopupWithFormEditProfileForm.setEventListeners();
+imagePopup.setEventListeners();
+popupWithFormAddCard.setEventListeners();
+popupWithFormEditProfileForm.setEventListeners();
