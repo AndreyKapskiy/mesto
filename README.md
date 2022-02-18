@@ -4,4 +4,4 @@
 ## Настроина связь между разными частями приложения и сборка.
 
 Ссылка
-https://andreykapskiy.github.io/mesto/
+https://AndreyKapskiy.github.io/mesto
